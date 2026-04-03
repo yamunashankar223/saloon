@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Salon – Precision Haircut</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #2b1720;
+            font-family: 'Epilogue', sans-serif;
+            color: white;
+            padding-bottom: 50px;
+        }
+
+        /* ---------------- STICKY NAVBAR ---------------- */
+        .nav-wrapper {
+            max-width: 1600px;
+            margin: 15px auto;
+            background: #2b1720;
+            border: 2px solid #E8306E;
+            border-radius: 50px;
+            padding: 10px 30px;
+            position: sticky;
+            top: 10px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .brand {
+            color: #ff4fa3;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .nav-links a.active {
+            color: #ff4fa3;
+            border-bottom: 2px solid #ff4fa3;
+        }
+
+        .profile-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ff4fa3;
+        }
+
+        /* ---------------- HERO SECTION ---------------- */
+        .hero {
+            position: relative;
+            height: 420px;
+            width: 95%;
+            /* Increased width */
+            max-width: 1500px;
+            margin: 20px auto;
+            background: url("bg.jpg") center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        /* ---------------- AD CARD ---------------- */
+        .ad-card {
+            background: #4b1023;
+            color: #fff;
+            max-width: 1000px;
+            margin: 40px auto;
+            display: flex;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .ad-image {
+            flex: 1;
+            background: url("bridal-makeup.jpg") center/cover no-repeat;
+            min-height: 350px;
+        }
+
+        .ad-content {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .ad-tagline {
+            color: #ffb6c9;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 14px;
+        }
+
+        .ad-title {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .ad-subtitle {
+            color: #ffd9e4;
+            line-height: 1.5;
+        }
+
+        .ad-details {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #ffe4ee;
+        }
+
+        .ad-details span {
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* ---------------- BUTTONS ---------------- */
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+            border-radius: 60px;
+            font-size: 30px;
+        }
+
+        .btn-primary {
+            background: #ff2f7a;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #e62065;
+        }
+
+        /* ---------------- RESPONSIVE ---------------- */
+        @media (max-width: 800px) {
+            .nav-wrapper {
+                flex-direction: column;
+                gap: 15px;
+                border-radius: 20px;
+            }
+
+            .ad-card {
+                flex-direction: column;
+                width: 90%;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+        }
+
+        .ad-card {
+            display: flex;
+            /* This puts the items side-by-side */
+            align-items: stretch;
+            /* Ensures both sides are the same height */
+            background: #4b1023;
+            color: #fff;
+            max-width: 1000px;
+            margin: 40px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            /* Keeps the image corners rounded */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            margin-left: 30px 0px;
+        }
+
+        .ad-image {
+            flex: 1;
+            /* Takes up 50% of the space */
+            line-height: 0;
+            /* Removes small gap at bottom of image */
+        }
+
+        .ad-image img {
+            width: 100%;
+            /* Fills the width of the left side */
+            height: 100%;
+            /* Fills the height of the card */
+            object-fit: cover;
+            /* Prevents the image from looking stretched */
+        }
+
+        .ad-content {
+            flex: 1;
+            /* Takes up the other 50% of the space */
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* Mobile Responsive: Stacks the image on top of the text */
+        @media (max-width: 768px) {
+            .ad-card {
+                flex-direction: column;
+            }
+
+            .ad-image img {
+                height: 250px;
+                /* Fixed height for the image on mobile */
+            }
+        }
+
+
+
+        .wrapper {
+            display: flex;
+            max-width: 1100px;
+            width: 100%;
+            background: #4b1023;
+            border-radius: 12px;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        /* LEFT SIDE IMAGE */
+        .left {
+            flex: 1;
+            background: url("your-image.jpg") center/cover no-repeat;
+            min-height: 450px;
+        }
+
+        /* RIGHT SIDE CONTENT */
+        .right {
+            flex: 1.2;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ffb6c9;
+        }
+
+        .artists {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card {
+            background: #ffebf2;
+            color: #3b0b1a;
+            padding: 18px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .card img {
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .card .info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .name {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .rating {
+            font-size: 14px;
+            color: #6b2b3a;
+        }
+
+        /* MEDIA QUERY — STACK ON SMALL SCREENS */
+        @media (max-width: 768px) {
+            .wrapper {
+                flex-direction: column;
+            }
+
+            .left {
+                min-height: 250px;
+            }
+
+            .title {
+                font-size: 26px;
+            }
+        }
+
+        .ba-wrapper {
+            display: flex;
+            background: #4b1023;
+            border-radius: 12px;
+            overflow: hidden;
+            color: #fff;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        /* LEFT IMAGE */
+        .ba-left {
+            flex: 1;
+            background: url("before-after.jpg") center/cover no-repeat;
+            min-height: 420px;
+        }
+
+        /* RIGHT CONTENT */
+        .ba-right {
+            flex: 1.2;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .ba-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ffb6c9;
+        }
+
+        .ba-text {
+            font-size: 17px;
+            color: #ffd9e4;
+            line-height: 1.6;
+        }
+
+        .ba-points li {
+            margin-bottom: 8px;
+            color: #ffe4ee;
+            font-size: 15px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .ba-wrapper {
+                flex-direction: column;
+            }
+
+            .ba-left {
+                min-height: 260px;
+            }
+
+            .ba-title {
+                font-size: 26px;
+            }
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        /* Brand Section */
+        .footer-brand {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-brand h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #ff4f9a;
+        }
+
+        .social-icons i {
+            font-size: 22px;
+            margin-right: 15px;
+            cursor: pointer;
+            color: #ff4f9a;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        /* Brand Section */
+        .footer-brand {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-brand h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #ff4f9a;
+        }
+
+        .social-icons i {
+            font-size: 22px;
+            margin-right: 15px;
+            cursor: pointer;
+            color: #ff4f9a;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav-wrapper">
+        <div class="logo">💇 <span class="brand">Luxe Salon</span></div>
+        <ul class="nav-links">
+            <li><a href="index1.html">Home</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
+            <li><a href="joinmembership2.html">Membership</a></li>
+        </ul>
+        <img src="navlogo.jpg" class="profile-img" alt="profile">
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Become a Salon Member & Save More</h1>
+            <p>Experience the latest trends and professional styling with our expert team.</p>
+            <a href="joinmembership2.html" class="btn btn-primary">Book Appointment</a>
+        </div>
+    </section>
+
+
+    <section class="ad-card">
+        <div class="ad-image">
+            <img src="makeup2.jpg" alt="profile">
+        </div>
+        <div class="ad-content">
+            <div class="ad-tagline">Our Makeup Services</div>
+            <div class="ad-title">Bridal Makeup</div>
+            <p class="ad-subtitle">Look radiant on your special day with our bespoke bridal makeup service.</p>
+            <div class="ad-details">
+                Includes consultation, trial, and application on the wedding day.
+                <span><strong>Price:</strong> $450</span>
+                <span><strong>Duration:</strong> 3 hours</span>
+                <span><strong>Style:</strong> Classic, Glamorous, Natural</span>
+            </div>
+            <div class="ad-cta">
+
+                <button class="btn btn-primary" onclick="location.href='joinmembership2.html'">Book Now
+
+
+            </div>
+        </div>
+    </section>
+
+    <section class="ad-card">
+        <div class="ad-image">
+            <img src="makeup3.jpg" alt="profile">
+        </div>
+        <div class="ad-content">
+            <div class="ad-tagline">Our Makeup Services</div>
+            <div class="ad-title">Bridal Makeup</div>
+            <p class="ad-subtitle">Look radiant on your special day with our bespoke bridal makeup service.</p>
+            <div class="ad-details">
+                Includes consultation, trial, and application on the wedding day.
+                <span><strong>Price:</strong> $450</span>
+                <span><strong>Duration:</strong> 3 hours</span>
+                <span><strong>Style:</strong> Classic, Glamorous, Natural</span>
+            </div>
+            <div class="ad-cta">
+                <button class="btn btn-primary" onclick="location.href='joinmembership2.html'">Book Now
+
+            </div>
+        </div>
+    </section>
+
+    <section class="ad-card">
+        <div class="ad-image">
+            <img src="makeup4.jpg" alt="profile">
+        </div>
+        <div class="ad-content">
+            <div class="ad-tagline">Our Makeup Services</div>
+            <div class="ad-title">Bridal Makeup</div>
+            <p class="ad-subtitle">Look radiant on your special day with our bespoke bridal makeup service.</p>
+            <div class="ad-details">
+                Includes consultation, trial, and application on the wedding day.
+                <span><strong>Price:</strong> $450</span>
+                <span><strong>Duration:</strong> 3 hours</span>
+                <span><strong>Style:</strong> Classic, Glamorous, Natural</span>
+            </div>
+            <div class="ad-cta">
+                <button class="btn btn-primary" onclick="location.href='joinmembership2.html'">Book Now
+
+            </div>
+        </div>
+    </section>
+
+    <section class="ad-card">
+        <div class="ad-image">
+            <img src="makeup5.jpg" alt="profile">
+        </div>
+        <div class="ad-content">
+            <div class="ad-tagline">Our Makeup Services</div>
+            <div class="ad-title">Bridal Makeup</div>
+            <p class="ad-subtitle">Look radiant on your special day with our bespoke bridal makeup service.</p>
+            <div class="ad-details">
+                Includes consultation, trial, and application on the wedding day.
+                <span><strong>Price:</strong> $450</span>
+                <span><strong>Duration:</strong> 3 hours</span>
+                <span><strong>Style:</strong> Classic, Glamorous, Natural</span>
+            </div>
+            <div class="ad-cta">
+                <button class="btn btn-primary" onclick="location.href='joinmembership2.html'">Book Now
+
+            </div>
+        </div>
+    </section>
+
+    <section class="ad-card">
+        <div class="ad-image">
+            <img src="makeup1.jpg" alt="profile">
+        </div>
+        <div class="ad-content">
+            <div class="ad-tagline">Our Makeup Services</div>
+            <div class="ad-title">Bridal Makeup</div>
+            <p class="ad-subtitle">Look radiant on your special day with our bespoke bridal makeup service.</p>
+            <div class="ad-details">
+                Includes consultation, trial, and application on the wedding day.
+                <span><strong>Price:</strong> $450</span>
+                <span><strong>Duration:</strong> 3 hours</span>
+                <span><strong>Style:</strong> Classic, Glamorous, Natural</span>
+            </div>
+            <div class="ad-cta">
+                <button class="btn btn-primary" onclick="location.href='joinmembership2.html'">Book Now
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- LEFT IMAGE -
+        <div class="left"></div>---->
+
+    <!-- RIGHT CONTENT -->
+    <div class="right">
+        <div class="title">Meet Our Makeup Artists</div>
+
+        <div class="artists">
+
+            <div class="card">
+                <img src="artist1.jpg" alt="">
+                <div class="info">
+                    <div class="name">Sophia Bennett</div>
+                    <div class="rating">⭐ 4.9 (120 reviews)</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="artist2.jpg" alt="">
+                <div class="info">
+                    <div class="name">Olivia Carter</div>
+                    <div class="rating">⭐ 4.8 (95 reviews)</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="artist3.jpg" alt="">
+                <div class="info">
+                    <div class="name">Isabella Hayes</div>
+                    <div class="rating">⭐ 4.7 (110 reviews)</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="ba-wrapper">
+        <div class="ad-image">
+            <img src="withoutmakeup.jpg" alt="profile">
+        </div>
+        <div class="ad-image">
+            <img src="withmakeup.jpg" alt="profile">
+        </div>
+        <div class="ba-left"></div>
+
+        <div class="ba-right">
+            <h2 class="ba-title">Before & After</h2>
+
+            <p class="ba-text">
+                See the transformation created through expert makeup techniques.
+                Our artists enhance natural beauty while keeping your features authentic.
+            </p>
+
+            <ul class="ba-points">
+                <li>Smoother, glowing skin finish</li>
+                <li>Enhanced eyes & defined brows</li>
+                <li>Professional hair styling</li>
+                <li>Natural yet polished look</li>
+            </ul>
+        </div>
+    </div>
+    <div class="hero">
+
+        <div class="hero-content">
+
+            <h1>Hair Cut & Hair Care Services</h1>
+
+            <p>
+                Experience the latest trends and professional styling with our expert team.
+                Book your appointment today for a fresh new look.
+            </p>
+
+
+
+            <button class="btn btn-primary" onclick="location.href='joinmembership2.html'">Get
+                Membership
+                Appointment
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>

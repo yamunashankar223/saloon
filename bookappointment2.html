@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Successful - Luxe Salon</title>
+    <style>
+        body {
+            background: #1b0f16;
+            font-family: 'Epilogue', sans-serif;
+            padding: 0;
+            margin: 0;
+            color: white;
+        }
+
+        /* NAVBAR */
+        .nav-wrapper {
+            max-width: 1200px;
+            margin: 20px auto;
+            background: #2b1720;
+            border: 2px solid #E8306E;
+            border-radius: 15px;
+            padding: 10px 20px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #ff2f7a;
+            font-weight: bold;
+            font-size: 1.8rem;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 30px;
+        }
+
+        /* SUCCESS SECTION */
+        .main-content {
+            max-width: 1250px;
+            margin: 40px auto;
+            background-color: #472430;
+            border-radius: 20px;
+            overflow: hidden;
+            padding-bottom: 40px;
+        }
+
+        .success-section {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .success-section h1 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .success-icon svg {
+            width: 150px;
+            /* Adjusted size */
+            height: auto;
+            margin-bottom: 20px;
+            animation: popIn 0.5s ease-out;
+        }
+
+        /* BOOKING DETAILS */
+        .booking-details-container {
+            padding: 0 40px;
+        }
+
+        .separator {
+            border: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 20px 0;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* Two equal columns */
+            gap: 20px;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+
+        .label {
+            color: #E8306E;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .value {
+            font-size: 1.1rem;
+        }
+
+        /* BUTTONS */
+        .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #E8306E;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #EDE7F0;
+            color: #E8306E;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* MOBILE FIX */
+        @media (max-width: 600px) {
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .nav-wrapper {
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-wrapper">
+        <div class="navbar">
+            <div class="logo">💇 Luxe Salon</div>
+            <div class="menu">
+                <a href="index1.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="joinmembership2.html">Membership</a>
+            </div>
+            <img src="navlogo.jpg" width="60" style="border-radius: 50%;" alt="User">
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="success-section">
+            <h1>Appointment Booked Successfully</h1>
+            <div class="success-icon">
+                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#27CE7D" d="M256,0l32.5,13.4l41.6-26.6l23.7,42.4L399.2,35l12.7,46.8l48.4,5.9l0.4,48.8l43.7,21.3l-12,47.3l30.4,38.1l-23.7,42.4
+                    l12,47.3l-43.7,21.3l-0.4,48.8l-48.4,5.9l-12.7,46.8l-45.4,5.8l-23.7,42.4L288.5,498.6L256,512l-32.5-13.4l-41.6,26.6l-23.7-42.4
+                    l-45.4-5.8l-12.7-46.8l-48.4-5.9l-0.4-48.8l-43.7-21.3l12-47.3l-30.4-38.1l23.7-42.4l-12-47.3l43.7-21.3l0.4-48.8l48.4-5.9l12.7-46.8
+                    l45.4-5.8l23.7-42.4l41.6,26.6L256,0z" />
+                    <polyline fill="none" stroke="white" stroke-width="45" stroke-linecap="round"
+                        stroke-linejoin="round" points="160,260 225,325 350,190" />
+                </svg>
+            </div>
+            <p>Your appointment has been successfully booked. Details below:</p>
+        </div>
+
+        <div class="booking-details-container">
+            <hr class="separator">
+            <div class="details-grid">
+                <div class="detail-item">
+                    <span class="label">Booking ID</span>
+                    <span class="value">#123456</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Service</span>
+                    <span class="value">Haircut & Style</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Stylist</span>
+                    <span class="value">Ava Harper</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Date & Time</span>
+                    <span class="value">July 20, 2024, 2:00 PM</span>
+                </div>
+            </div>
+            <hr class="separator">
+
+            <div class="button-group">
+                <button class="btn btn-primary">View My Bookings</button>
+                <button class="btn btn-secondary" onclick="location.href='index.html'">Back to Home</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

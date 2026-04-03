@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Salon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Epilogue;
+            font-size: xx-large;
+        }
+
+        body {
+            background: #1b0f16;
+            padding: 20px;
+        }
+
+        /* NAVBAR WRAPPER */
+        .nav-wrapper {
+            max-width: 1600px;
+            margin: 20px auto;
+            background: #2b1720;
+            border: 2px solid #0f0e0f;
+            border-radius: 15px;
+            padding: 10px 20px;
+        }
+
+
+
+        /* NAVBAR GRID LAYOUT */
+        .navbar {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            color: white;
+            padding: 10px 0;
+            border: 2px solid #E8306E;
+            /* OUTLINE */
+            border-radius: 10px;
+        }
+
+
+        .nav-wrapper {
+            max-width: 1600px;
+            margin: 20px auto;
+            background: #2b1720;
+            border: 2px solid #E8306E;
+            border-radius: 15px;
+            padding: 10px 20px;
+            /* Sticky logic starts here */
+            position: sticky;
+            top: 10px;
+            /* Gap between top of screen and the bar */
+            z-index: 1000;
+            /* Keeps it on top of images */
+        }
+        }
+
+        /* LOGO LEFT */
+        .logo {
+            color: #ff2f7a;
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+
+        /* NAV LINKS CENTER */
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+        }
+
+        .nav-links a.active {
+            color: #ff2f7a;
+            border-bottom: 2px solid #ff2f7a;
+            padding-bottom: 3px;
+        }
+
+        /* LOGIN BUTTON RIGHT */
+        .login-btn {
+            justify-self: end;
+            background: #ff2f7a;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background: #ff4f90;
+            transform: translateY(-2px);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .navbar {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .login-btn {
+                justify-self: center;
+            }
+        }
+
+        /* HERO SECTION */
+
+        .hero {
+            position: relative;
+            height: 420px;
+            background: url("bg1.jpg") center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.35);
+        }
+
+        .hero-content {
+            position: relative;
+            color: white;
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        /* BUTTONS */
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background: #ff2f7a;
+            color: white;
+        }
+
+        .btn-outline {
+            background: white;
+            color: #ff2f7a;
+            border: 2px solid #ff2f7a;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width:900px) {
+
+            .hero {
+                height: 360px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+        }
+
+        @media (max-width:600px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .hero {
+                height: 320px;
+            }
+
+            .hero h1 {
+                font-size: 26px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 200px;
+                margin: auto;
+            }
+
+        }
+
+        /* SECTION TITLE */
+
+        .section-title {
+            font-size: 26px;
+            margin-bottom: 35px;
+            color: white;
+            margin-top: 45px;
+        }
+
+        /* SERVICES */
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .service-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .service-card p {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        /* WHY CHOOSE */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 20px;
+            margin-bottom: 60px;
+            width: 80%;
+
+        }
+
+        .feature-card {
+            background: white;
+            color: #333;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .feature-card h4 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #8a5a63;
+        }
+
+        /* TESTIMONIAL */
+
+        .testimonial-card {
+            background: white;
+            color: #333;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-header img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .rating {
+            color: #ff3b7a;
+            margin: 10px 0;
+        }
+
+        .review-actions {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #8a5a63;
+        }
+
+        /* BOTTOM IMAGE */
+
+        .bottom-image img {
+            width: 100%;
+            border-radius: 20px;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        /* RESPONSIVE */
+
+        /* Tablet */
+
+        @media (max-width:1000px) {
+
+            .services {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        /* Mobile */
+
+        @media (max-width:600px) {
+
+            .services {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            body {
+                padding: 20px;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+
+        }
+
+
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+            ;
+            padding: 120px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: auto;
+            opacity: 0.9;
+        }
+
+        .btn-group {
+            margin-top: 25px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+            display: inline-block;
+        }
+
+        .primary {
+            background: #b3003c;
+            color: #fff;
+        }
+
+        .secondary {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1a1a1a;
+            padding: 50px 20px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            line-height: 1.8 rem;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-brand h2 {
+            font-size: 45px;
+            margin-bottom: 50px;
+        }
+
+        .social-icons {
+            color: white;
+            margin-left: 20px;
+        }
+
+        .social-icons a {
+            margin-right: 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-links h3 {
+            color: whitesmoke;
+
+        }
+
+        .footer-brand h2 {
+            color: #E8306E;
+            margin-left: 20px;
+        }
+
+        footer p {
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .footer-links h3 {
+            margin-bottom: 10px;
+            font-size: 25px;
+        }
+
+        .footer-links a,
+        .footer-links p {
+            display: block;
+            margin-bottom: 6px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .copy {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            opacity: 0.7;
+            color: white;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+
+
+            padding-top: 80px;
+            border-top: 1px solid #ffffff33;
+            /* thin soft white line */
+        }
+
+
+        /* 📱 MEDIA QUERY FOR MOBILE */
+        @media (max-width: 768px) {
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .btn {
+                margin: 10px 0;
+                width: 80%;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                margin-bottom: 20px;
+            }
+        }
+
+        .nav-links {
+            list-style: none;
+            /* Removes the bullet points */
+            display: flex;
+            /* Puts the links in a row */
+            gap: 40px;
+            /* Matches your previous spacing */
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Container styling */
+        .services-section {
+            background-color: #3d1f28;
+            /* Deep plum background */
+            padding: 40px 20px;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+        }
+
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        /* Grid Layout */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            /* 4 columns on desktop */
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Card & Link styling */
+        .service-card {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            /* Subtle hover lift */
+        }
+
+        .image-container {
+            aspect-ratio: 1 / 1;
+            /* Keeps images perfectly square */
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Ensures image fills the square without stretching */
+        }
+
+        .service-label {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .section-title
+        /* --- Media Queries --- */
+
+        /* For Tablets */
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 columns on tablets */
+            }
+        }
+
+        /* For Mobile Phones */
+        @media (max-width: 480px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                /* 1 column on mobile */
+            }
+
+            .section-title {
+                text-align: center;
+            }
+
+            .service-label {
+                text-align: center;
+            }
+        }
+
+        .section-title h2 {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-wrapper">
+        <div class="navbar">
+
+            <div class="logo">💇 Luxe Salon</div>
+
+            <ul class="nav-links">
+                <li><a href="index1.html" class="active">Home</a></li>
+                <li><a href="services.html">Service</a></li>
+                <li><a href="joinmembership2.html">Membership</a></li>
+            </ul>
+
+            <a href="login1.html" class="login-btn">Login</a>
+        </div>
+    </div>
+
+    <!---------<a href="indexhome.html" class="active">Home</a>
+                <a href="service.html">Service</a>
+                <a href="project.html">Project</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>--------->
+
+
+
+    <!----------------- <div class="navbar">
+
+            <div class="logo">
+                💇 Luxe Salon
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a class="active" href="#">Services</a></li>
+                <li><a href="#">Membership</a></li>
+            </ul>
+
+            <div class="profile">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg">
+            </div>
+
+        </div>--->
+
+
+    <!-- HERO SECTION -->
+    <div class="nav-wrapper">
+        <div class="hero">
+
+            <div class="hero-content">
+
+                <h1>Hair Cut & Hair Care Services</h1>
+
+                <p>
+                    Experience the latest trends and professional styling with our expert team.
+                    Book your appointment today for a fresh new look.
+                </p>
+
+                <div class="buttons">
+                    <button class="btn btn-primary" onclick="location.href='proceed3.html'">Book Appointment</button>
+                    <button class="btn btn-primary" onclick="location.href='joinmembership2.html'">Get
+                        Membership</button>
+
+
+                </div>
+
+            </div>
+
+        </div>
+        <section class="services-section">
+            <h2 class="section-title">Our Services</h2>
+
+            <div class="services-grid">
+                <a href="ourservices.html" class="service-card">
+                    <div class="image-container">
+                        <img src="hair.jpg" alt="Hair styling service">
+                    </div>
+
+                    <span class="service-label">Hair</span>
+                </a>
+
+                <a href="facial1.html" class="service-card">
+                    <div class="image-container">
+                        <img src="serviceimage2.jpg" alt="Hair styling service">
+                    </div>
+                    <span class="service-label">Facial</span>
+                </a>
+
+                <a href="spa3.html" class="service-card">
+                    <div class="image-container">
+                        <img src="serviceimage3.jpg" alt="Spa and wellness products">
+                    </div>
+                    <span class="service-label">Spa</span>
+                </a>
+
+                <a href="makeup2.html" class="service-card">
+                    <div class="image-container">
+                        <img src="serviceimage4.jpg" alt="Professional makeup application">
+                    </div>
+                    <span class="service-label">Makeup</span>
+                </a>
+            </div>
+        </section>
+
+
+
+        <!-- WHY CHOOSE US -->
+
+        <h2 class="section-title">Why Choose Us</h2>
+
+        <div class="features">
+
+            <div class="feature-card">
+                <h4>✂ Expert Stylists</h4>
+                <p>
+                    Our team of highly skilled stylists are passionate about creating
+                    stunning looks tailored to your individual style.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <h4>$ Affordable Pricing</h4>
+                <p>
+                    We offer competitive pricing without compromising on quality,
+                    ensuring you receive exceptional value.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <h4>✔ Hygienic</h4>
+                <p>
+                    We maintain the highest standards of cleanliness and hygiene to ensure
+                    a safe and comfortable experience.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <h4>📅 Easy Booking</h4>
+                <p>
+                    Our user-friendly online booking system makes it easy to schedule your
+                    appointments at your convenience.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- TESTIMONIAL -->
+
+        <h2 class="section-title">Testimonials</h2>
+
+        <div class="testimonial-card">
+
+            <div class="testimonial-header">
+                <img src="https://randomuser.me/api/portraits/women/45.jpg">
+                <div>
+                    <strong>Sophia Bennett</strong><br>
+                    <small>2 months ago</small>
+                </div>
+            </div>
+
+            <div class="rating">★★★★★</div>
+
+            <p>
+                I had an amazing experience at Luxe Salon! The staff was incredibly
+                friendly and professional, and I absolutely loved my new haircut.
+                I highly recommend this salon to anyone looking for top-notch
+                service and a stylish, modern look.
+            </p>
+
+            <div class="review-actions">
+                👍 10 &nbsp;&nbsp; 👎 1
+            </div>
+
+        </div>
+
+
+        <!-- BOTTOM IMAGE -->
+
+        <div class="bottom-image">
+            <img src="bg.jpg">
+        </div>
+
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Book Your Perfect Salon Appointment</h1>
+                <p>Experience the ultimate in beauty and relaxation with our expert team and luxurious treatments.</p>
+
+                <div class="buttons">
+                    <button class="btn btn-primary" onclick="location.href='proceed3.html'">Book Appointment</button>
+                    <button class="btn btn-primary" onclick="location.href='joinmembership2.html'">Get
+                        Membership</button>
+
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-container">
+
+                <div class="footer-brand">
+                    <h2>Luxe Salon</h2>
+                    <div class="social-icons">
+                        <div class="social-icons">
+                            <i class="fab fa-facebook-f"></i>
+                            <i class="fab fa-twitter"></i>
+                            <i class="fab fa-instagram"></i>
+                            <i class="fab fa-linkedin-in"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Terms & Policies</h3>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Home</h3>
+                    <a href="#">Service</a>
+                    <a href="#">Membership</a>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Contact</h3>
+                    <p>(+234) 8089466435</p>
+                    <p>agencycr@gmail.com</p>
+                </div>
+
+            </div>
+            <p class="copy">Copyright © Luxe Salon 2022. All rights reserved.</p>
+
+
+        </footer>
+    </div>
+    </div>
+
+    </div>
+    </div>
+</body>
+
+</html>

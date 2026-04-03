@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Salon</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #3b0f1d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* CARD */
+        .container {
+            width: 600px;
+            background: #d9869d;
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        /* LOGO */
+        .logo {
+            color: #e91e63;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* HEADINGS */
+        h1 {
+            font-family: serif;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .sub {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        /* INPUT */
+        .input-box {
+            width: 80%;
+            margin: 0 auto 30px;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 15px;
+            border-radius: 15px;
+            border: 2px solid #9be0d2;
+            outline: none;
+            font-size: 16px;
+        }
+
+        /* BUTTON */
+        .btn {
+            background: #e91e63;
+            color: #fff;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 15px;
+            font-size: 22px;
+            cursor: pointer;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:hover {
+            background: #c2185b;
+        }
+
+        /* OTP BOXES */
+        .otp {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .otp input {
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            font-size: 22px;
+            border-radius: 12px;
+            border: 2px solid teal;
+            outline: none;
+        }
+
+        /* HIDE SECTIONS */
+        .hidden {
+            display: none;
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media(max-width:768px) {
+            .container {
+                width: 90%;
+                padding: 30px 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .btn {
+                width: 100%;
+                font-size: 18px;
+            }
+
+            .otp input {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- LOGIN SCREEN -->
+    <div class="container" id="loginScreen">
+        <div class="logo">💆 Luxe Salon</div>
+
+        <h1>World’s Last Minute Orders</h1>
+        <div class="sub">Login or Sign Up</div>
+
+        <div class="input-box">
+            <input type="text" placeholder="+1 (555) 123-4567">
+        </div>
+
+        <button class="btn" onclick="showOTP()">Continue</button>
+    </div>
+
+    <!-- OTP SCREEN -->
+    <div class="container hidden" id="otpScreen">
+        <div class="logo">💆 Luxe Salon</div>
+
+        <h1>OTP Verification</h1>
+        <div class="sub">We have sent a verification code to</div>
+        <p>+1 (555) 123-4567</p>
+
+        <div class="otp">
+            <input type="text" maxlength="1">
+            <input type="text" maxlength="1">
+            <input type="text" maxlength="1">
+            <input type="text" maxlength="1">
+        </div>
+
+        <button class="btn">Login</button>
+    </div>
+
+    <script>
+        function showOTP() {
+            document.getElementById("loginScreen").classList.add("hidden");
+            document.getElementById("otpScreen").classList.remove("hidden");
+        }
+    </script>
+
+</body>
+
+</html>

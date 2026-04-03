@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luxe Salon – Booking</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Epilogue', Arial, sans-serif;
+            background: #3a0f1f;
+            color: #fff;
+        }
+
+        /* NAVBAR */
+        .nav-wrapper {
+            max-width: 1600px;
+            margin: 20px auto;
+            background: #2b1720;
+            border: 2px solid #E8306E;
+            border-radius: 15px;
+            padding: 10px 20px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #ff2f7a;
+            font-weight: bold;
+            font-size: 1.8rem;
+        }
+
+        .menu {
+            display: flex;
+            gap: 40px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        /* BOOKING CONTAINER */
+        .booking-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #4a152b;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        /* ROW STYLING */
+        .booking-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #5a1a35;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .booking-row:hover {
+            background: #6d2141;
+        }
+
+        .label {
+            font-size: 14px;
+            opacity: 0.7;
+            margin: 0;
+        }
+
+        .value {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 5px 0 0 0;
+        }
+
+        .edit-btn {
+            background: transparent;
+            border: 1px solid #ff7eb9;
+            color: #ff7eb9;
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* SMALL WHITE DROPDOWN */
+        .hidden-dropdown {
+            display: none;
+            width: 220px;
+            /* Small width */
+            margin: 10px 0 20px 0;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            background: #ffffff;
+            /* White background */
+            color: #3a0f1f;
+            /* Dark text */
+            font-size: 16px;
+            font-weight: bold;
+            outline: none;
+        }
+
+        /* TOTAL & BUTTON */
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .price {
+            color: #ff4fa3;
+        }
+
+        .payment-btn {
+            width: 100%;
+            margin-top: 20px;
+            padding: 18px;
+            background: #ff4fa3;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="nav-wrapper">
+        <div class="navbar">
+            <div class="logo">💇 Luxe Salon</div>
+            <div class="menu">
+                <a href="index1.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="joinmembership2.html">Membership</a>
+            </div>
+            <img src="navlogo.jpg" width="50" style="border-radius: 50%;" alt="User">
+        </div>
+    </div>
+
+    <div class="nav-wrapper">
+        <section class="booking-container">
+            <h2>Your booking</h2>
+
+            <div class="booking-row" onclick="toggleElement('serviceDropdown')">
+                <div>
+                    <p class="label">Service</p>
+                    <p class="value" id="serviceValue">Select</p>
+                </div>
+                <button class="edit-btn">Edit</button>
+            </div>
+            <select id="serviceDropdown" class="hidden-dropdown" onchange="updateDisplay('serviceValue', this)">
+                <option value="" disabled selected>Select Service</option>
+                <option value="Haircut">Haircut</option>
+                <option value="Skin Care">Skin Care</option>
+                <option value="Spa">Spa</option>
+                <option value="Make up">Make up</option>
+            </select>
+
+            <div class="booking-row" onclick="location.href='select stylish 2.html'">
+                <div>
+                    <p class="label">Stylist</p>
+                    <p class="value">Select stylist</p>
+                </div>
+                <button class="edit-btn">Edit</button>
+            </div>
+
+            <div class="booking-row" onclick="toggleElement('datePicker')">
+                <div>
+                    <p class="label">Date</p>
+                    <p class="value" id="dateValue">Select date</p>
+                </div>
+                <button class="edit-btn">Edit</button>
+            </div>
+            <input type="date" id="datePicker" class="hidden-dropdown" onchange="updateDisplay('dateValue', this)">
+
+            <div class="booking-row" onclick="toggleElement('timeDropdown')">
+                <div>
+                    <p class="label">Time</p>
+                    <p class="value" id="timeValue">Select time</p>
+                </div>
+                <button class="edit-btn">Edit</button>
+            </div>
+            <select id="timeDropdown" class="hidden-dropdown" onchange="updateDisplay('timeValue', this)">
+                <option value="12.00 AM - 01.00 AM">12.00 AM - 01.00 AM</option>
+                <option value="01.00 AM - 02.00 AM">01.00 AM - 02.00 AM</option>
+                <option value="02.00 AM - 03.00 AM">02.00 AM - 03.00 AM</option>
+            </select>
+
+            <div class="total-row">
+                <span>Total</span>
+                <span class="price">$120</span>
+            </div>
+
+            <button class="payment-btn" onclick="location.href='secure1.html'">Proceed to Payment</button>
+        </section>
+    </div>
+
+    <script>
+        // Function to show/hide the small white dropdowns
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            // Hide all other dropdowns first
+            document.querySelectorAll('.hidden-dropdown').forEach(d => {
+                if (d.id !== id) d.style.display = 'none';
+            });
+            // Toggle the clicked one
+            el.style.display = (el.style.display === "block") ? "none" : "block";
+        }
+
+        // Function to update the text inside the row
+        function updateDisplay(valueId, dropdown) {
+            document.getElementById(valueId).innerText = dropdown.value;
+            dropdown.style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>

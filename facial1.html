@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Salon Spa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #2b1720;
+            font-family: 'Epilogue', sans-serif;
+            color: white;
+            padding-bottom: 50px;
+        }
+
+        /* Center everything globally */
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* ---------------- STICKY NAVBAR ---------------- */
+        .nav-wrapper {
+            max-width: 1200px;
+            width: 90%;
+            margin: 15px auto;
+            background: #2b1720;
+            border: 2px solid #E8306E;
+            border-radius: 50px;
+            padding: 10px 30px;
+            position: sticky;
+            top: 10px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .brand {
+            color: #ff4fa3;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .nav-links a.active {
+            color: #ff4fa3;
+            border-bottom: 2px solid #ff4fa3;
+        }
+
+        .profile-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ff4fa3;
+        }
+
+        /* ---------------- HERO SECTION ---------------- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 40px;
+            background: #3d222e;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            background: url("spa1.jpg") center/cover no-repeat;
+            background-color: #555;
+            height: 350px;
+            border-radius: 12px;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .hero-text h1 {
+            font-size: 36px;
+            color: #ff4fa3;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+        }
+
+        /* ---------------- SERVICE CARDS ---------------- */
+        .service-card {
+            background: #4a1022;
+            width: 90%;
+            max-width: 900px;
+            border-radius: 12px;
+            display: flex;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            margin: 20px 0;
+        }
+
+        .service-card img {
+            width: 50%;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 30px;
+            width: 50%;
+            color: #fff;
+        }
+
+        .btn {
+            background: #ff4f8b;
+            padding: 12px 26px;
+            border-radius: 60px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+
+        }
+
+        .btn:hover {
+            background: #ff2f73;
+            transform: translateY(-2px);
+        }
+
+        /* ---------------- AMBIENCE SECTION ---------------- */
+        .ambience-section {
+            background-color: #4a2c3a;
+            color: #ffffff;
+            padding: 60px 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .content-wrapper {
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        .image-grid {
+            display: flex;
+            gap: 30px;
+        }
+
+        .image-card {
+            flex: 1;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* ---------------- RATING BOX ---------------- */
+        .rating-box {
+            background: #ffffff;
+            width: 90%;
+            max-width: 900px;
+            border-radius: 12px;
+            display: flex;
+            padding: 25px;
+            gap: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            color: #333;
+            margin: 20px 0;
+            box-sizing: border-box;
+        }
+
+        .rating-box img {
+            width: 45%;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .rating-content {
+            width: 55%;
+        }
+
+        .rating-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #2b1720;
+        }
+
+        .bar-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .bar {
+            height: 10px;
+            background: #ddd;
+            flex-grow: 1;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 0 10px;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: #4caf50;
+        }
+
+        /* ---------------- REVIEWS ---------------- */
+        .reviews-wrapper {
+            width: 90%;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .review-card {
+            background: #2b1720;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .review-card img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .stars {
+            color: gold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        /* ---------------- FOOTER ---------------- */
+        .footer {
+            background: #111;
+            color: #fff;
+            padding: 40px 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        /* 📱 MEDIA QUERY — Mobile */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero,
+            .service-card,
+            .rating-box,
+            .review-card,
+            .image-grid {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .service-card img,
+            .service-content,
+            .rating-box img,
+            .rating-content {
+                width: 100%;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+        }
+
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* ---------------- OUR AMBIENCE ---------------- */
+        .ambience-section {
+            background-color: #4a2c3a;
+            /* Deep plum background */
+            padding: 60px 0;
+            width: 100%;
+        }
+
+        .ambience-section p {
+            line-height: 1.6;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            color: #e0e0e0;
+        }
+
+        .image-grid {
+            display: flex;
+            gap: 30px;
+        }
+
+        .image-card {
+            flex: 1;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            /* Rounded corners like in screenshot */
+            display: block;
+            object-fit: cover;
+        }
+
+        /* ---------------- SKIN CARE SERVICES ---------------- */
+        .services-section {
+            padding: 60px 0;
+            width: 100%;
+        }
+
+        .services-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            /* Allows wrapping on smaller screens */
+        }
+
+        .service-item {
+            flex: 1;
+            min-width: 200px;
+            /* Ensures items don't get too squished */
+            text-align: left;
+        }
+
+        .service-img-box {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            /* Keeps images square */
+            margin-bottom: 15px;
+        }
+
+        .service-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            /* Rounded corners for service thumbnails */
+        }
+
+        .service-item h3 {
+            font-size: 1.25rem;
+            margin: 10px 0 5px 0;
+        }
+
+        .service-item p {
+            font-size: 0.95rem;
+            color: #c0b0b8;
+            line-height: 1.4;
+        }
+
+        /* ---------------- RESPONSIVE MEDIA QUERIES ---------------- */
+        @media (max-width: 768px) {
+
+            /* Stack Ambience images vertically */
+            .image-grid {
+                flex-direction: column;
+            }
+
+            /* Adjust Services grid for mobile */
+            .services-grid {
+                justify-content: center;
+                gap: 40px;
+            }
+
+            .service-item {
+                flex: 0 0 45%;
+                /* Show 2 items per row on tablets */
+            }
+
+            h2 {
+                font-size: 1.75rem;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .service-item {
+                flex: 0 0 100%;
+                /* Show 1 item per row on small phones */
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav-wrapper">
+        <div class="logo">💇 <span class="brand">Luxe Salon</span></div>
+        <ul class="nav-links">
+            <li><a href="index1.html">Home</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
+            <li><a href="joinmembership2.html">Membership</a></li>
+        </ul>
+        <img src="navlogo.jpg" class="profile-img" alt="profile">
+    </nav>
+
+    <div class="main-container">
+
+        <section class="hero">
+            <div class="hero-image">
+
+
+                <div class="hero-text">
+                    <h1>Relaxing Spa Services</h1>
+                    <p>Indulge in our serene spa treatments designed to rejuvenate your mind and body. Experience
+                        tranquility and emerge refreshed.</p>
+                    <button class="btn" onclick="location.href='proceed3.html'">Book Appointment</button>
+                    <button class="btn" onclick="location.href='joinmembership2.html'">Get Membership</button>
+                </div>
+        </section>
+
+
+        <section class="services-section">
+            <div class="content-wrapper">
+                <h2>Skin Care Services</h2>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <div class="service-img-box"><img src="care1.jpg" alt="Facial"></div>
+                        <h3>Facial</h3>
+                        <p>Deep cleansing and hydration for a refreshed complexion.</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-img-box"><img src="care2.jpg" alt="Clean-Up"></div>
+                        <h3>Clean-Up</h3>
+                        <p>Quick and effective cleansing to remove impurities.</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-img-box"><img src="care3.jpg" alt="Acne Treatment"></div>
+                        <h3>Acne Treatment</h3>
+                        <p>Targeted treatment to reduce acne and prevent breakouts.</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-img-box"><img src="care4.jpg" alt="Anti-Aging"></div>
+                        <h3>Anti-Aging</h3>
+                        <p>Rejuvenating treatments to minimize wrinkles and fine lines.</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-img-box"><img src="care5.jpg" alt="Skin Brightening"></div>
+                        <h3>Skin Brightening</h3>
+                        <p>Enhance your skin's natural radiance and even out skin tone.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <div class="reviews-wrapper">
+            <div class="review-card">
+                <img src="artist1.jpg" alt="Reviewer">
+                <div class="review-content">
+                    <div style="display:flex; justify-content: space-between;">
+                        <span style="font-weight:bold;">Sophia Bennett</span>
+                        <span style="color:#a8ffb0; font-size:0.9rem;">2 weeks ago</span>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p>The body massage was incredibly relaxing. Skilled therapist and perfect atmosphere.</p>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <img src="artist2.jpg" alt="Reviewer">
+                <div class="review-content">
+                    <div style="display:flex; justify-content: space-between;">
+                        <span style="font-weight:bold;">Olivia Carter</span>
+                        <span style="color:#a8ffb0; font-size:0.9rem;">1 month ago</span>
+                    </div>
+                    <div class="stars">★★★★☆</div>
+                    <p>The head massage was good, but the room could have been a bit quieter.</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <img src="artist3.jpg" alt="Reviewer">
+                <div class="review-content">
+                    <div style="display:flex; justify-content: space-between;">
+                        <span style="font-weight:bold;">Olivia Carter</span>
+                        <span style="color:#a8ffb0; font-size:0.9rem;">1 month ago</span>
+                    </div>
+                    <div class="stars">★★★★☆</div>
+                    <p>The head massage was good, but the room could have been a bit quieter.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="hero">
+        <div class="hero-text" style="text-align: center;">
+            <h1>Book Your Perfect Saloon Appointment</h1>
+            <p>Experience the latest trends and professional styling with our expert team.</p>
+            <button class="btn" onclick="location.href='joinmembership2.html'">Get Membership</button>
+        </div>
+    </section>
+
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div>
+                <h2>Luxe Salon</h2>
+                <p>Facebook | Instagram | Twitter</p>
+            </div>
+            <div>
+                <h3>Terms</h3>
+                <p>Privacy Policy | Terms of Service</p>
+            </div>
+            <div>
+                <h3>Contact</h3>
+                <p>(+234) 8089466435</p>
+                <p>agencycr@gmail.com</p>
+            </div>
+        </div>
+        <p class="copyright">© Luxe Salon 2022. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

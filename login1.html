@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Salon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #3b0f1d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 600px;
+            background: #d9869d;
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .logo {
+            color: #e91e63;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        h1 {
+            font-family: serif;
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #3b0f1d;
+        }
+
+        .sub {
+            font-size: 18px;
+            margin-bottom: 25px;
+            color: #444;
+        }
+
+        .input-box {
+            width: 80%;
+            margin: 0 auto 30px;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 15px;
+            border-radius: 15px;
+            border: 2px solid #9be0d2;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .btn {
+            background: #e91e63;
+            color: #fff;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 15px;
+            font-size: 22px;
+            cursor: pointer;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #c2185b;
+            transform: translateY(-2px);
+        }
+
+        .otp {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .otp input {
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            font-size: 22px;
+            border-radius: 12px;
+            border: 2px solid teal;
+            outline: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media(max-width:768px) {
+            .container {
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* PAGINATION - REFINED */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            /* Tighter gap */
+            margin-top: 50px;
+        }
+
+        .arrow-btn {
+            background: #000;
+            color: white;
+            /* Use width/height instead of large padding for a perfect square */
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            /* Smaller, cleaner size */
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+
+            /* Center the arrow inside the button */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .arrow-btn:hover {
+            background: #333;
+            transform: translateY(-2px);
+            /* Subtle "pop" effect */
+        }
+
+        /* Optional: Add a 'disabled' look if there are no more pages */
+        .arrow-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container" id="loginScreen">
+        <div class="logo">💆 Luxe Salon</div>
+        <h1>World’s Last Minute Orders</h1>
+        <div class="sub">Login or Sign Up</div>
+        <div class="input-box">
+            <input type="text" placeholder="+1 (555) 123-4567">
+        </div>
+        <button class="btn" onclick="showOTP()">Continue</button>
+    </div>
+
+    <div class="container hidden" id="otpScreen">
+        <div class="logo">💆 Luxe Salon</div>
+        <h1>OTP Verification</h1>
+        <div class="sub">Code sent to +1 (555) 123-4567</div>
+        <div class="otp">
+            <input type="text" maxlength="1">
+            <input type="text" maxlength="1">
+            <input type="text" maxlength="1">
+            <input type="text" maxlength="1">
+        </div>
+        <button class="btn" onclick="goToHome()">Login</button>
+    </div>
+    <div class="pagination">
+        <button class="arrow-btn" aria-label="Previous page">‹</button>
+        <button class="arrow-btn" aria-label="Next page">›</button>
+    </div>
+    <script>
+        const loginScreen = document.getElementById("loginScreen");
+        const otpScreen = document.getElementById("otpScreen");
+        const otpInputs = document.querySelectorAll(".otp input");
+
+        function showOTP() {
+            loginScreen.classList.add("hidden");
+            otpScreen.classList.remove("hidden");
+            otpInputs[0].focus(); // Focus first box automatically
+        }
+
+        // Auto-focus next input field
+        otpInputs.forEach((input, index) => {
+            input.addEventListener("input", (e) => {
+                if (e.inputType === "deleteContentBackward") {
+                    if (index > 0) otpInputs[index - 1].focus();
+                    return;
+                }
+                if (input.value.length === 1 && index < otpInputs.length - 1) {
+                    otpInputs[index + 1].focus();
+                }
+            });
+
+            // Backspace support
+            input.addEventListener("keydown", (e) => {
+                if (e.key === "Backspace" && !input.value && index > 0) {
+                    otpInputs[index - 1].focus();
+                }
+            });
+        });
+
+        function goToHome() {
+            let otp = "";
+            otpInputs.forEach(input => otp += input.value);
+
+            if (otp === "2563") {
+                window.location.href = "INDEX.html";
+            } else {
+                alert("Invalid OTP. Hint: 2563");
+                otpInputs.forEach(input => input.value = "");
+                otpInputs[0].focus();
+            }
+        }
+    </script>
+</body>
+
+</html>

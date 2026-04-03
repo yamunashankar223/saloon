@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Salon | Membership</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            background: #472430;
+            font-family: 'Epilogue';
+            margin: 0;
+            color: white;
+            box-sizing: border-box;
+            font-family: Epilogue;
+            font-size: x-large;
+        }
+
+
+        /* NAV WRAPPER */
+        .nav-wrapper {
+            max-width: 1600px;
+            margin: 20px auto;
+            background: #2b1720;
+            border: 2px solid #E8306E;
+            border-radius: 15px;
+            padding: 10px 20px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+        }
+
+        .logo {
+            color: #ff2f7a;
+            font-weight: bold;
+            font-size: 28px;
+            transition: 0.4s;
+        }
+
+        .menu {
+            display: flex;
+            gap: 40px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 35px;
+        }
+
+        /* NAV LINKS CENTER */
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+        }
+
+        .nav-links a.active {
+            color: #ff2f7a;
+            border-bottom: 2px solid #ff2f7a;
+            padding-bottom: 3px;
+        }
+
+        /* Update these sections in your <style> tag */
+
+        .menu a.active {
+            color: #ff2f7a;
+            border-bottom: 3px solid #ff2f7a;
+            padding-bottom: 5px;
+        }
+
+        /* Optional: Add a hover state so users know they can click other links */
+        .menu a:hover {
+            color: #ff2f7a;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            height: 420px;
+            background: url("bg.jpg") center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.35);
+        }
+
+        .hero-content {
+            position: relative;
+            color: white;
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        /* BUTTONS */
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.2s;
+        }
+
+        .btn-primary {
+            background: #ff2f7a;
+            color: white;
+        }
+
+        .btn-outline {
+            background: white;
+            color: #ff2f7a;
+            border: 2px solid #ff2f7a;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        /* MOBILE MENU */
+        @media (max-width:768px) {
+
+            .menu {
+                display: none;
+                flex-direction: column;
+                background: #472430;
+                position: absolute;
+                top: 80px;
+                right: 20px;
+                padding: 20px;
+                border-radius: 10px;
+                border: 2px solid #E8306E;
+            }
+
+            #menu-toggle:checked~.menu {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width:900px) {
+
+            .hero {
+                height: 360px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+        }
+
+        @media (max-width:600px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .hero {
+                height: 320px;
+            }
+
+            .hero h1 {
+                font-size: 26px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 200px;
+                margin: auto;
+            }
+
+        }
+
+        /* PRICING */
+        :root {
+            --card-bg: #2d1622;
+            --pink: #d81b60;
+        }
+
+        .pricing-section {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .pricing-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            position: relative;
+            transition: 0.4s;
+            border: 2px solid transparent;
+        }
+
+        .silver {
+            border-color: #00d2ff;
+        }
+
+        .gold {
+            border-color: #39ff14;
+        }
+
+        .platinum {
+            border-color: #8e2de2;
+        }
+
+        .select-btn {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            border: 1px solid var(--pink);
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-bottom: 25px;
+            transition: 0.4s;
+        }
+
+        .badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--pink);
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+        }
+
+        /* FOOTER */
+        .main-footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+            padding: 60px 80px 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .brand-name {
+            color: #d81b60;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-left: 10px;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .membership-btn {
+            background-color: white;
+            color: #d81b60;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        /* HIGHLIGHT EFFECT */
+        .glow {
+            filter: drop-shadow(0 0 15px #ff2f7a) !important;
+            border: 3px solid white !important;
+            transform: scale(1.05);
+            background-color: #ff2f7a !important;
+            /* Makes buttons pop */
+            color: white !important;
+        }
+
+        #navImg {
+            transition: 0.4s;
+            border-radius: 10px;
+        }
+
+        :root {
+            --bg-dark: #3a1c2a;
+            --card-bg: #2d1622;
+            --pink: #d81b60;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .title {
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .pricing-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            /* Allows cards to wrap on smaller screens */
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Specific Border Colors */
+        .silver {
+            border: 2px solid #00d2ff;
+        }
+
+        .gold {
+            border: 2px solid #39ff14;
+        }
+
+        .platinum {
+            border: 2px solid #8e2de2;
+        }
+
+        /* Elements */
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            font-weight: normal;
+            color: #ccc;
+        }
+
+        .select-btn {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            border: 1px solid var(--pink);
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-bottom: 25px;
+            transition: background 0.3s;
+        }
+
+        .select-btn:hover {
+            background: var(--pink);
+        }
+
+        .badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--pink);
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .features {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .features li {
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            color: #eee;
+        }
+
+        .features li::before {
+            content: "✓";
+            color: white;
+            margin-right: 10px;
+        }
+
+        /* --- Media Query for Mobile --- */
+        @media (max-width: 768px) {
+            .pricing-container {
+                flex-direction: column;
+                /* Stack cards vertically */
+                align-items: center;
+            }
+
+            .card {
+                width: 90%;
+                /* Take up most of the screen width */
+            }
+        }
+
+        .section-title {
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        /* --- Table Styling --- */
+        .table-container {
+            overflow-x: auto;
+            /* For mobile responsiveness */
+            margin-bottom: 60px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            /* Ensures rounded corners show */
+        }
+
+        .comparison-table th {
+            background-color: var(--text-pink);
+            text-align: left;
+            padding: 15px 20px;
+            font-weight: 400;
+        }
+
+        .comparison-table td {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            color: #a08090;
+            /* Muted text color for values */
+        }
+
+        .comparison-table tr td:first-child {
+            color: white;
+            /* Benefit name stays bright */
+        }
+
+        /* --- Timeline Styling --- */
+        .timeline {
+            margin-left: 10px;
+        }
+
+        .step {
+            display: flex;
+            gap: 20px;
+            position: relative;
+            padding-bottom: 30px;
+        }
+
+        /* The vertical line */
+        .step:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            left: 12px;
+            top: 35px;
+            width: 1px;
+            height: calc(100% - 35px);
+            background: white;
+            border-left: 1px dashed #ffffff;
+            /* Dashed look like image */
+        }
+
+        .icon {
+            font-size: 24px;
+            z-index: 1;
+            background: var(--bg-color);
+            /* Matches bg to clear the line */
+        }
+
+        .step h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+        }
+
+        .step p {
+            margin: 0;
+            color: #a08090;
+            font-size: 0.95rem;
+        }
+
+        .title {
+            margin: 40px 0 20px;
+            font-weight: 500;
+        }
+
+        /* --- FAQ Accordion --- */
+        .faq-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        details {
+            border: 1px solid #777;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            list-style: none;
+            /* Removes default arrow */
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        /* Hide Chrome arrow */
+
+        .answer {
+            padding: 0 20px 15px;
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* --- Testimonials --- */
+        .testimonials {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .user-meta strong {
+            display: block;
+            font-size: 1.1rem;
+        }
+
+        .user-meta span {
+            color: #a08090;
+            font-size: 0.85rem;
+        }
+
+        .stars {
+            color: #d81b60;
+            margin: 10px 0;
+            font-size: 1.2rem;
+        }
+
+        .comment {
+            line-height: 1.6;
+            color: #eee;
+            max-width: 800px;
+            margin-bottom: 10px;
+        }
+
+        .actions {
+            color: #a08090;
+            font-size: 0.9rem;
+            display: flex;
+            gap: 20px;
+        }
+
+
+
+        /* CTA Section */
+        .cta-section {
+            background-color: #3a1c2a;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .membership-btn {
+            background-color: white;
+            color: #d81b60;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .membership-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer Section */
+        .main-footer {
+            background-color: #1a1a1a;
+            /* Darker background for footer */
+            color: #ccc;
+            padding: 60px 80px 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+            /* Matches the layout in image */
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .footer-col a:hover {
+            color: #d81b60;
+        }
+
+        .brand-name {
+            color: #d81b60;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-left: 10px;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #333;
+            margin-top: 60px;
+            padding-top: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* --- Responsive Media Query --- */
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                /* 2 columns on tablets */
+            }
+
+            .main-footer {
+                padding: 40px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                /* 1 column on mobile */
+            }
+        }
+
+        /* Simple highlight effect */
+        .glow {
+            filter: drop-shadow(0 0 15px #ff2f7a) !important;
+            border: 3px solid white !important;
+            transform: scale(1.05);
+            transition: 0.4s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-wrapper">
+        <div class="navbar">
+            <div class="logo" id="navLogo">💇 Luxe Salon</div>
+            <div class="menu">
+                <a href="index1.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="joinmembership2.html" class="active">Membership</a>
+            </div>
+            <img src="navlogo.jpg" alt="Salon" id="navImg">
+        </div>
+    </div>
+
+    <div class="nav-wrapper">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Become a Salon Member & Save More</h1>
+                <p>Experience the latest trends and professional styling with our expert team.</p>
+                <div class="buttons">
+                    <button class="btn btn-primary trigger-btn">Join Membership</button>
+                </div>
+            </div>
+        </div>
+
+        <section class="pricing-section">
+            <h2 class="title">Membership Plans</h2>
+            <div class="pricing-container">
+                <div class="card silver">
+                    <h3>Silver Plan - Monthly</h3>
+                    <p class="price">$49 <span>/month</span></p>
+                    <button class="select-btn" onclick="location.href='checkout3 ok.html'">Select Plan</button>
+                    <ul class="features">
+                        <li>10% off all services</li>
+                        <li>1 free add-on service per month</li>
+                        <li>Priority booking</li>
+                    </ul>
+
+
+                </div>
+                <div class="card gold">
+                    <span class="badge">Most Popular</span>
+                    <h3>Gold Plan - Quarterly</h3>
+                    <p class="price">$129 <span>/quarter</span></p>
+                    <button class="select-btn" onclick="location.href='checkout3 ok.html'">Select Plan</button>
+
+                    <ul class="features">
+                        <li>15% off all services</li>
+                        <li>2 free add-on services per quarter</li>
+                        <li>Priority booking</li>
+                    </ul>
+
+
+
+                </div>
+                <div class="card platinum">
+                    <h3>Platinum Plan - Yearly</h3>
+                    <p class="price">$399 <span>/year</span></p>
+                    <button class="select-btn" onclick="location.href='checkout3 ok.html'">Select Plan</button>
+                    <ul class="features">
+                        <li>20% off all services</li>
+                        <li>4 free add-on services per year</li>
+                        <li>Priority booking</li>
+                    </ul>
+
+
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Start Saving Today</h2>
+            <button class="membership-btn trigger-btn">Get Membership</button>
+        </section>
+
+
+        <h2 class="section-title">Plan Comparison</h2>
+        <div class="table-container">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Benefit</th>
+                        <th>Silver Plan</th>
+                        <th>Gold Plan</th>
+                        <th>Platinum Plan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Discount on Services</td>
+                        <td>10%</td>
+                        <td>15%</td>
+                        <td>20%</td>
+                    </tr>
+                    <tr>
+                        <td>Free Add-on Services</td>
+                        <td>1 per month</td>
+                        <td>2 per quarter</td>
+                        <td>4 per year</td>
+                    </tr>
+                    <tr>
+                        <td>Priority Booking</td>
+                        <td>Included</td>
+                        <td>Included</td>
+                        <td>Included</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="section-title">How Membership Works</h2>
+        <div class="timeline">
+            <div class="step">
+                <div class="icon">🖱️</div>
+                <div class="content">
+                    <h3>Choose Your Plan</h3>
+                    <p>Select the membership plan that best suits your needs and preferences.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="icon">💳</div>
+                <div class="content">
+                    <h3>Pay</h3>
+                    <p>Complete the payment process to activate your membership.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="icon">⭐</div>
+                <div class="content">
+                    <h3>Enjoy Benefits</h3>
+                    <p>Start enjoying exclusive discounts, free add-ons, and priority booking.</p>
+                </div>
+            </div>
+        </div>
+
+        </section>
+        <section class="support-section">
+            <h2 class="title">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <details>
+                    <summary>How long is my membership valid? <span class="arrow">∨</span></summary>
+                    <p class="answer">Your membership is valid for the duration of the plan selected (Monthly,
+                        Quarterly, or Yearly) starting from the date of purchase.</p>
+                </details>
+
+                <details>
+                    <summary>Can I cancel my membership? <span class="arrow">∨</span></summary>
+                    <p class="answer">Yes, you can cancel at any time through your account settings. Your benefits will
+                        remain active until the end of your current billing cycle.</p>
+                </details>
+
+                <details>
+                    <summary>Do you offer refunds? <span class="arrow">∨</span></summary>
+                    <p class="answer">Refunds are handled on a case-by-case basis. Please contact support within 48
+                        hours of purchase.</p>
+                </details>
+            </div>
+
+            <h2 class="title">Member Testimonials</h2>
+            <div class="testimonials">
+                <div class="review">
+                    <div class="user-info">
+                        <div class="user-meta">
+                            <strong>Sophia Bennett</strong>
+                            <span>2 months ago</span>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="comment">"I love my Silver Plan! The discounts are fantastic, and I always get my
+                        preferred appointment times. It's a game-changer for regular salon visits."</p>
+                    <div class="actions">
+                        <span>👍 15</span> <span>👎 2</span>
+                    </div>
+                </div>
+
+                <div class="review">
+                    <div class="user-info">
+                        <div class="user-meta">
+                            <strong>Olivia Carter</strong>
+                            <span>4 months ago</span>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="comment">"The Gold Plan is perfect for me. The quarterly free add-ons are a great bonus,
+                        and the priority booking ensures I never miss out on my favorite stylist."</p>
+                    <div class="actions">
+                        <span>👍 12</span> <span>👎 1</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="cta-section">
+            <h2>Start Saving Today</h2>
+            <button class="membership-btn trigger-btn">Get Membership</button>
+        </section>
+
+        <script>
+            // 1. Select the "Get Membership" button
+            const getMembershipBtn = document.querySelector('.membership-btn');
+
+            // 2. Listen for a click
+            getMembershipBtn.addEventListener('click', () => {
+                // 3. Find all items to highlight (Logo, Nav Img, and Pricing Cards)
+                const targets = document.querySelectorAll('.logo, #navImg ');
+
+                // 4. Toggle the 'glow' class on each one
+                targets.forEach(item => {
+                    item.classList.toggle('glow');
+                });
+            });
+        </script>
+        <footer class="main-footer">
+            <div class="footer-grid">
+                <div class="footer-col brand">
+                    <div class="logo" id="navLogo">💆‍♀️ Luxe Salon</div>
+
+                    <div class="social-icons">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-linkedin-in"></i>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Terms & Policies</h3>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Home</h3>
+                    <ul>
+                        <li><a href="#">Service</a></li>
+                        <li><a href="#">Membership</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p>(+234) 8089466435</p>
+                    <p>agencycr@gmail.com</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Copyright, Luxe Salon 2022. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+
+    </div>
+
+    <script>
+        // 1. Select both trigger buttons
+        const triggerButtons = document.querySelectorAll('.trigger-btn');
+
+        // 2. Add event listener to each button
+        triggerButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+
+                // 3. Select all targets: 
+                // Navbar Logo, Nav Image, Pricing Cards, "Select Plan" buttons, and Footer Logo
+                const targets = document.querySelectorAll(
+                    '#navLogo, #navImg,  .select-btn, .footer-logo'
+                );
+
+                // 4. Toggle the glow class
+                targets.forEach(item => {
+                    item.classList.toggle('glow');
+                });
+                // 5. Automatically remove the glow after 1.5 seconds
+                setTimeout(() => {
+                    targets.forEach(item => {
+                        item.classList.remove('glow');
+                    });
+                }, 1500); // 1500 milliseconds = 1.5 seconds
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: #1b0f16;
+            font-family: Epilogue;
+            padding: 20px;
+            color: white;
+        }
+
+        /* NAVBAR WRAPPER */
+        .nav-wrapper {
+            max-width: 1600px;
+            margin: 20px auto;
+            background: #2b1720;
+            border: 2px solid #E8306E;
+            border-radius: 15px;
+            padding: 10px 20px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        /* LOGO */
+        .logo {
+            color: #ff2f7a;
+            font-weight: bold;
+            font-size: 1.8rem;
+        }
+
+        /* MENU LINKS */
+        .menu {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: xx-large;
+        }
+
+
+
+        /* HAMBURGER */
+        .hamburger {
+            display: none;
+            font-size: 32px;
+            cursor: pointer;
+            color: white;
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        /* MOBILE MENU */
+        @media (max-width: 768px) {
+
+            .menu {
+                display: none;
+                flex-direction: column;
+                background: #2b1720;
+                position: absolute;
+                top: 90px;
+                right: 20px;
+                padding: 20px;
+                border-radius: 10px;
+                border: 2px solid #E8306E;
+                gap: 20px;
+            }
+
+            #menu-toggle:checked~.menu {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        /* Payment Page Specific Styles */
+        .payment-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            color: white;
+            text-align: left;
+            /* Aligns labels to the left like the image */
+        }
+
+        .main-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 50px;
+        }
+
+        .section-label {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* Payment Methods */
+        .method-option {
+            background: white;
+            color: black;
+            padding: 18px 25px;
+            border-radius: 50px;
+            /* Rounded pill shape */
+            margin-bottom: 15px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .method-option.active {
+            background: #80ded9;
+            /* Teal color from your image */
+        }
+
+        /* Amount Summary */
+        .summary-section {
+            margin-top: 50px;
+        }
+
+        .summary-item,
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            max-width: 600px;
+            /* Keeps the numbers from being too far right */
+            margin-bottom: 15px;
+        }
+
+        .summary-item .label {
+            color: #ff5e91;
+        }
+
+        /* Pinkish labels */
+        .summary-total {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
+            font-weight: bold;
+        }
+
+        .secure-text {
+            text-align: center;
+            color: #ff5e91;
+            font-size: 14px;
+            margin-top: 40px;
+        }
+
+        /* Action Button */
+        .pay-btn {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            margin: 30px auto;
+            background: #e9316e;
+            color: #80ded9;
+
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: capitalize;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+
+        .pay-btn:hover {
+            transform: scale(1.02);
+            background: #80ded9;
+            ;
+        }
+
+        /* --- MEDIA QUERIES --- */
+        @media (max-width: 768px) {
+            .payment-container {
+                padding: 15px;
+                margin: 10px auto;
+            }
+
+            .section-label {
+                font-size: 20px;
+            }
+
+            .summary-item,
+            .summary-total {
+                font-size: 14px;
+            }
+
+            .pay-btn {
+                width: 90%;
+            }
+        }
+
+        /* highlight */
+        .highlight {
+            border: 3px solid #ff2f7a;
+            padding: 5px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px #ff2f7a;
+        }
+
+        /* pagination*/
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+
+        }
+
+        .arrow-btn {
+            background: black;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .arrow-btn:hover {
+            background: #333;
+        }
+
+        /* MOBILE VIEW */
+        @media (max-width: 768px) {
+            .pagination {
+                justify-content: center;
+                gap: 40px;
+            }
+
+            .arrow-btn {
+                padding: 10px 18px;
+                font-size: 22px;
+            }
+        }
+
+        .payment-btn {
+            width: 100%;
+            margin-top: 20px;
+            padding: 18px;
+            border: none;
+
+            font-size: 18px;
+
+            color: #fff;
+            cursor: pointer;
+            background: #80ded9;
+            ;
+            color: black;
+            padding: 18px 25px;
+            border-radius: 50px;
+            /* Rounded pill shape */
+            margin-bottom: 15px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.3s;
+            text-align: left;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="nav-wrapper">
+        <div class="navbar">
+
+            <div class="logo" id="navLogo">💇 Luxe Salon</div>
+
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="hamburger">☰</label>
+
+            <div class="menu">
+                <a href="index1.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="joinmembership2.html">Membership</a>
+
+            </div>
+
+            <img src="navlogo.jpg" width="200" alt="description" id="navImg">
+
+        </div>
+    </div>
+    <div class="payment-container">
+        <h1 class="main-title">Secure Payment</h1>
+
+        <div class="payment-section">
+            <h2 class="section-label">Payment Method</h2>
+            <button class="payment-btn" onclick="location.href='checkout3 ok.html'">Credit / Debit Card</button>
+
+
+            <div class="method-option">
+                <span>UPI Payment</span>
+            </div>
+        </div>
+
+        <div class="summary-section">
+            <h2 class="section-label">Amount Summary</h2>
+
+            <div class="summary-item">
+                <span class="label">Subtotal</span>
+                <span class="value">$120</span>
+            </div>
+
+            <div class="summary-item">
+                <span class="label">Taxes</span>
+                <span class="value">$10</span>
+            </div>
+
+            <div class="summary-total">
+                <span class="label">Total</span>
+                <span class="value">$130</span>
+            </div>
+        </div>
+
+        <p class="secure-text">Secure payment powered by Stripe</p>
+        <button class="pay-btn" onclick="location.href='bookappointment2.html'">Pay &Confirm Booking</button>
+
+    </div>
+    </div>
+
+    <script>
+        function highlightNavbar() {
+            // turn ON highlight
+            document.getElementById("navLogo").classList.add("highlight");
+            document.getElementById("navImg").classList.add("highlight");
+
+            // turn OFF highlight after 2 seconds
+            setTimeout(() => {
+                document.getElementById("navLogo").classList.remove("highlight");
+                document.getElementById("navImg").classList.remove("highlight");
+            }, 2000); // 2000ms = 2 seconds
+        }
+    </script>
+
+
+
+
+    <script>
+        function goToPayment() {
+            window.location.href = "proceed.html";
+        }
+    </script>
+    <div class="pagination">
+        <div class="pagination">
+            <button class="arrow-btn" onclick="goHome()">◀</button>
+            <button class="arrow-btn" onclick="goPayment()">▶</button>
+        </div>
+
+        <script>
+            function goHome() {
+                window.location.href = "indexhome.html";
+            }
+
+            function goPayment() {
+                window.location.href = "payment.html";
+            }
+        </script>
+
+        <!-- LEFT ARROW → GO TO HOME -
+        <button class="arrow-btn " onclick="goHome()">
+            ◀
+        </button>---->
+
+        <!-- RIGHT ARROW → GO TO PAYMENT -
+        <button class="arrow-btn" onclick="goPayment()">
+            ▶
+        </button>--->
+
+    </div>
+
+    <script>
+        function goHome() {
+            window.location.href = "indexhome.html";
+        }
+
+        function goPayment() {
+            window.location.href = "payment.html";
+        }
+    </script>
+</body>
+
+</html>
